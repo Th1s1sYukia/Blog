@@ -1,32 +1,150 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>旧版日记仿markdown编译代码 | Hexo</title><meta name="keywords" content="old blog,diary"><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="旧版日记仿markdown编译代码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="旧版日记仿markdown编译代码">
+<meta property="og:url" content="http://example.com/2019/02/21/%E6%97%A7%E7%89%88%E6%97%A5%E8%AE%B0%E4%BB%BFmarkdown%E7%BC%96%E8%AF%91%E4%BB%A3%E7%A0%81/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="旧版日记仿markdown编译代码">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2019-02-21T14:00:00.000Z">
+<meta property="article:modified_time" content="2019-02-21T14:00:00.000Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="old blog">
+<meta property="article:tag" content="diary">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2019/02/21/%E6%97%A7%E7%89%88%E6%97%A5%E8%AE%B0%E4%BB%BFmarkdown%E7%BC%96%E8%AF%91%E4%BB%A3%E7%A0%81/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '旧版日记仿markdown编译代码',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2019-02-21 22:00:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
 
-block content
-  #post
-    if top_img === false
-      include includes/header/post-info.pug
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
 
-    article#article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      include includes/third-party/share/index.pug
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
         
-    if theme.reward.enable
-      !=partial('includes/post/reward', {}, {cache: true})
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">16</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">24</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">8</div></a></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">旧版日记仿markdown编译代码</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2019-02-21T14:00:00.000Z" title="Created 2019-02-21 22:00:00">2019-02-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2019-02-21T14:00:00.000Z" title="Updated 2019-02-21 22:00:00">2019-02-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Hexo/">Hexo</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="旧版日记仿markdown编译代码"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>旧版日记仿markdown编译代码</p>
+<span id="more"></span>
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .ads-wrap!=theme.ad.post
-
-    if theme.post_pagination
-      include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
-
-    if page.comments !== false && theme.comments && theme.comments.use
-      - var commentsJsLoad = true
-      !=partial('includes/third-party/comments/index', {}, {cache: true})
-      
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;hexo-fs&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> myDiary = fs.readFileSync(<span class="string">&#x27;source/my.diary&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> timeRangeAndDiaries = myDiary.split(<span class="regexp">/-&#123;9,&#125;/</span>); <span class="comment">// Split by /-&#123;9,&#125;/ so that having time ranges and diaries separated (trimmed).</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; timeRangeAndDiaries.length; i++) &#123;</span><br><span class="line">    timeRangeAndDiaries[i] = timeRangeAndDiaries[i].trim();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (timeRangeAndDiaries[i].startsWith(<span class="string">&#x27;#&#x27;</span>)) &#123; <span class="comment">// Edit time ranges to have h2 tags covered.</span></span><br><span class="line">        timeRangeAndDiaries[i] = <span class="string">&#x27;&lt;h2&gt;&#x27;</span> + timeRangeAndDiaries[i].replace(<span class="string">&#x27;#&#x27;</span>, <span class="string">&#x27;&#x27;</span>).trim() + <span class="string">&#x27;&lt;/h2&gt;&#x27;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// switch \n to &#123;newline&#125;</span></span><br><span class="line">        timeRangeAndDiaries[i] = timeRangeAndDiaries[i].replace(<span class="regexp">/\n+/g</span>, <span class="string">&#x27;&#123;newline&#125;&#x27;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Search list tags in each diaries and save them into temps for parts of paragraph.</span></span><br><span class="line">        <span class="keyword">var</span> tempLists = timeRangeAndDiaries[i].match(<span class="regexp">/\[list\](.*?)\[\/list\]/g</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Search img tags in each diaries and save them into temps for parts of paragraph.</span></span><br><span class="line">        <span class="keyword">var</span> tempImgs = timeRangeAndDiaries[i].match(<span class="regexp">/\[img\](.*?)\[\/img\]/g</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Edit the saved temps for parts of paragraph to html tags and replace them to each diary (clear out newline characters).</span></span><br><span class="line">        <span class="keyword">if</span> (tempLists != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; tempLists.length; j++) &#123;</span><br><span class="line">                <span class="keyword">var</span> temp = tempLists[j].replace(<span class="regexp">/\[\/?list\]/g</span>, <span class="string">&#x27;&#x27;</span>).split(<span class="string">&#x27;&#123;newline&#125;&#x27;</span>);</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">var</span> k = <span class="number">0</span>; k &lt; temp.length; k++) &#123;</span><br><span class="line">                    <span class="keyword">var</span> trimmed = temp[k].replace(<span class="regexp">/(&#123;newline&#125;)+/g</span>, <span class="string">&#x27;&#x27;</span>).trim();</span><br><span class="line">                    <span class="keyword">if</span> (trimmed == <span class="string">&#x27;&#x27;</span>) &#123;</span><br><span class="line">                        temp[k] = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        temp[k] = <span class="string">&#x27;&lt;li&gt;&#x27;</span> + trimmed + <span class="string">&#x27;&lt;/li&gt;&#x27;</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                tempLists[j] = <span class="string">&#x27;&lt;ul&gt;&#x27;</span> + temp.join(<span class="string">&#x27;&#x27;</span>) + <span class="string">&#x27;&lt;/ul&gt;&#x27;</span>;</span><br><span class="line">                timeRangeAndDiaries[i] = timeRangeAndDiaries[i].replace(<span class="regexp">/\[list\](.*?)\[\/list\]/</span>, tempLists[j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (tempImgs != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; tempImgs.length; j++) &#123;</span><br><span class="line">                tempImgs[j] = <span class="string">&#x27;&lt;img src=&quot;&#x27;</span> + tempImgs[j].replace(<span class="regexp">/\[\/?img\]/g</span>, <span class="string">&#x27;&#x27;</span>).replace(<span class="regexp">/(&#123;newline&#125;)+/g</span>, <span class="string">&#x27;&#x27;</span>).trim() + <span class="string">&#x27;&quot;&gt;&#x27;</span>;</span><br><span class="line">                timeRangeAndDiaries[i] = timeRangeAndDiaries[i].replace(<span class="regexp">/\[img\](.*?)\[\/img\]/</span>, tempImgs[j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Split each diary by newline characters and save them into temps for paragraphing.</span></span><br><span class="line">        <span class="keyword">var</span> tempParagraphing = timeRangeAndDiaries[i].replace(<span class="regexp">/\n/g</span>, <span class="string">&#x27;&#x27;</span>).split(<span class="string">&#x27;&#123;newline&#125;&#x27;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Edit the saved temps for paragraphing to html tags and replace them to each diary (clear out newline characters and empty lines).</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; tempParagraphing.length; j++) &#123;</span><br><span class="line">            <span class="keyword">var</span> trimmed = tempParagraphing[j].replace(<span class="regexp">/(&#123;newline&#125;)+/g</span>, <span class="string">&#x27;&#x27;</span>).trim();</span><br><span class="line">            <span class="keyword">if</span> (trimmed == <span class="string">&#x27;&#x27;</span>) &#123;</span><br><span class="line">                tempParagraphing[j] = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!trimmed.startsWith(<span class="string">&#x27;&lt;ul&#x27;</span>)) &#123;</span><br><span class="line">                tempParagraphing[j] = <span class="string">&#x27;&lt;p&gt;&#x27;</span> + trimmed + <span class="string">&#x27;&lt;/p&gt;&#x27;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> tempDiary = tempParagraphing.join(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">        <span class="keyword">if</span> (tempDiary.trim() != <span class="string">&#x27;&#x27;</span>) &#123;</span><br><span class="line">            timeRangeAndDiaries[i] = <span class="string">&#x27;&lt;div class=&quot;diary-item&quot;&gt;&#x27;</span> + tempDiary + <span class="string">&#x27;&lt;/div&gt;&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Join these converted time ranges and diaries into string.</span></span><br><span class="line"><span class="keyword">var</span> html = timeRangeAndDiaries.join(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line"><span class="comment">// console.log(html)</span></span><br><span class="line">fs.writeFileSync(<span class="string">&#x27;public/diaries.html&#x27;</span>, html);</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2019/02/21/%E6%97%A7%E7%89%88%E6%97%A5%E8%AE%B0%E4%BB%BFmarkdown%E7%BC%96%E8%AF%91%E4%BB%A3%E7%A0%81/">http://example.com/2019/02/21/%E6%97%A7%E7%89%88%E6%97%A5%E8%AE%B0%E4%BB%BFmarkdown%E7%BC%96%E8%AF%91%E4%BB%A3%E7%A0%81/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/old-blog/">old blog</a><a class="post-meta__tags" href="/tags/diary/">diary</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2019/06/19/Oracle-SQL-Basic-Usage/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Oracle SQL Basic Usage</div></div></a></div><div class="next-post pull-right"><a href="/2019/01/17/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E6%AD%8C%E5%8D%95JS%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8JS%E4%BB%A3%E7%A0%81/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">网易云音乐歌单JS音乐播放器JS代码</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Doe</div><div class="author-info__description"></div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">16</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">24</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/12/04/hello-world/" title="Hello World"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2021/12/04/hello-world/" title="Hello World">Hello World</a><time datetime="2021-12-04T02:43:46.233Z" title="Created 2021-12-04 10:43:46">2021-12-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/04/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E6%A0%88Stack%E5%92%8C%E9%98%9F%E5%88%97Queue/" title="数据结构之栈Stack和队列Queue"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据结构之栈Stack和队列Queue"/></a><div class="content"><a class="title" href="/2020/04/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E6%A0%88Stack%E5%92%8C%E9%98%9F%E5%88%97Queue/" title="数据结构之栈Stack和队列Queue">数据结构之栈Stack和队列Queue</a><time datetime="2020-04-23T14:06:03.000Z" title="Created 2020-04-23 22:06:03">2020-04-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/04/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E7%BA%BF%E6%80%A7%E8%A1%A8List/" title="数据结构之线性表List"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据结构之线性表List"/></a><div class="content"><a class="title" href="/2020/04/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E7%BA%BF%E6%80%A7%E8%A1%A8List/" title="数据结构之线性表List">数据结构之线性表List</a><time datetime="2020-04-20T08:20:49.000Z" title="Created 2020-04-20 16:20:49">2020-04-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/04/18/%E7%AE%97%E6%B3%95%E4%B9%8B%E5%9F%BA%E7%A1%80/" title="算法之基础"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法之基础"/></a><div class="content"><a class="title" href="/2020/04/18/%E7%AE%97%E6%B3%95%E4%B9%8B%E5%9F%BA%E7%A1%80/" title="算法之基础">算法之基础</a><time datetime="2020-04-18T08:21:21.000Z" title="Created 2020-04-18 16:21:21">2020-04-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/04/18/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%9F%BA%E7%A1%80/" title="数据结构之基础"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据结构之基础"/></a><div class="content"><a class="title" href="/2020/04/18/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%9F%BA%E7%A1%80/" title="数据结构之基础">数据结构之基础</a><time datetime="2020-04-18T08:20:49.000Z" title="Created 2020-04-18 16:20:49">2020-04-18</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
