@@ -1,9 +1,7 @@
 /**
 * Based on jQuery, fontawesome
 */
-(function (window, document) {
-  var _player = function (id, playlist) {
-    if (playlist == undefined || playlist == null || playlist.length < 1) {
+(function (window, document) {var _player = function (id, playlist) {if (playlist == undefined || playlist == null || playlist.length < 1) {
       /** sample
       playlist = [
         {
@@ -31,18 +29,14 @@
     }).attr('id', id);
 
     var $coverButton = this.Component.CoverButton();
-    var $prevButton = this.Component.ControlButton({
-      'icon': '<i class="fas fa-angle-left"></i>'
+    var $prevButton = this.Component.ControlButton({'icon': '<i class="fas fa-angle-left"></i>'
     });
     var $playButton = this.Component.CustomPlayControlButton();
-    var $nextButton = this.Component.ControlButton({
-      'icon': '<i class="fas fa-angle-right"></i>'
+    var $nextButton = this.Component.ControlButton({'icon': '<i class="fas fa-angle-right"></i>'
     });
-    var $listButton = this.Component.ControlButton({
-      'icon': '<i class="fas fa-list"></i>'
+    var $listButton = this.Component.ControlButton({'icon': '<i class="fas fa-list"></i>'
     });
-    var $lyricButton = this.Component.ControlButton({
-      'icon': '<i class="fas fa-align-center"></i>'
+    var $lyricButton = this.Component.ControlButton({'icon': '<i class="fas fa-align-center"></i>'
     });
     var $modeButton = this.Component.CustomModeControlButton();
     var $songInfo = this.Component.SongInfo();
@@ -124,12 +118,8 @@
       'left': '76px',
       'width': '72px'
     })
-    $listView.css({
-      'display': 'none'
-    })
-    $lyricView.css({
-      'display': 'none'
-    })
+    $listView.css({'display': 'none'})
+    $lyricView.css({'display': 'none'})
 
     // Setting
     var currentVolume = 0.69;
@@ -142,73 +132,48 @@
     var _player_self = this;
 
     // Interface		
-    $listButton.click(function () {
-      $lyricView.hide();
-      $listView.slideToggle();
-    });
-    $lyricButton.click(function () {
-      $listView.hide();
-      $lyricView.slideToggle();
-    });
-    $coverButton.click(function () {
-      if (audio.paused && audio.readyState >= 3) {
-        audio.play();
+    $listButton.click(function () {$lyricView.hide();
+      $listView.slideToggle();});
+    $lyricButton.click(function () {$listView.hide();
+      $lyricView.slideToggle();});
+    $coverButton.click(function () {if (audio.paused && audio.readyState>= 3) {audio.play();
         audio.autoplay = true;
-      } else {
-        audio.pause();
+      } else {audio.pause();
         audio.autoplay = false;
       }
     });
-    $playButton.click(function () {
-      if (audio.paused && audio.readyState >= 3) {
-        audio.play();
+    $playButton.click(function () {if (audio.paused && audio.readyState>= 3) {audio.play();
         audio.autoplay = true;
-      } else {
-        audio.pause();
+      } else {audio.pause();
         audio.autoplay = false;
       }
     });
     $nextButton.click(function () {
       if (currentMode == _player_self.Component.MODE_NORMAL
-        || currentMode == _player_self.Component.MODE_REPEAT) {
-        prevStack.push(currentIndex);
+        || currentMode == _player_self.Component.MODE_REPEAT) {prevStack.push(currentIndex);
         currentIndex += 1;
-        if (currentIndex >= playlist.length) {
-          currentIndex = 0;
-        }
-      } else if (currentMode == _player_self.Component.MODE_RANDOM) {
-        prevStack.push(currentIndex);
+        if (currentIndex>= playlist.length) {currentIndex = 0;}
+      } else if (currentMode == _player_self.Component.MODE_RANDOM) {prevStack.push(currentIndex);
         currentIndex = Math.floor(Math.random() * playlist.length);
       }
       audio.src = playlist[currentIndex].url + '&br=128000';
-      audio.load();
-    });
-    $prevButton.click(function () {
-      if (prevStack.length > 0) {
-        currentIndex = prevStack.pop();
+      audio.load();});
+    $prevButton.click(function () {if (prevStack.length> 0) {currentIndex = prevStack.pop();
       } else if (currentMode == _player_self.Component.MODE_NORMAL
         || currentMode == _player_self.Component.MODE_REPEAT) {
         currentIndex -= 1;
-        if (currentIndex < 0) {
-          currentIndex = playlist.length - 1;
-        }
-      } else if (currentMode == _player_self.Component.MODE_RANDOM) {
-        currentIndex = Math.floor(Math.random() * playlist.length);
+        if (currentIndex < 0) {currentIndex = playlist.length - 1;}
+      } else if (currentMode == _player_self.Component.MODE_RANDOM) {currentIndex = Math.floor(Math.random() * playlist.length);
       }
       audio.src = playlist[currentIndex].url + '&br=128000';
-      audio.load();
-    });
-    $listView.children('div').click(function () {
-      prevStack.push(currentIndex);
+      audio.load();});
+    $listView.children('div').click(function () {prevStack.push(currentIndex);
       currentIndex = $(this).index();
       audio.src = playlist[currentIndex].url + '&br=128000';
-      audio.load();
-    });
+      audio.load();});
     $modeButton.click(function () {
       currentMode += 1;
-      if (currentMode > 2) {
-        currentMode = 0;
-      }
+      if (currentMode> 2) {currentMode = 0;}
       $modeButton.setMode(currentMode);
     });
     $progressBar.mousedown(function (e) {
@@ -216,20 +181,16 @@
       mouseUpTemp = mouseDownTemp / e.currentTarget.offsetWidth;
       $progressBar.setCurrentProgress(mouseUpTemp);
     });
-    $progressBar.mousemove(function (e) {
-      mouseUpTemp = (e.pageX - e.currentTarget.offsetLeft - e.currentTarget.offsetParent.offsetLeft) / e.currentTarget.offsetWidth;
-      if (mouseDownTemp >= 0) {
-        $progressBar.setCurrentProgress(mouseUpTemp);
+    $progressBar.mousemove(function (e) {mouseUpTemp = (e.pageX - e.currentTarget.offsetLeft - e.currentTarget.offsetParent.offsetLeft) / e.currentTarget.offsetWidth;
+      if (mouseDownTemp>= 0) {$progressBar.setCurrentProgress(mouseUpTemp);
       }
     });
-    $progressBar.mouseup(function (e) {
-      if (mouseDownTemp >= 0) {
+    $progressBar.mouseup(function (e) {if (mouseDownTemp>= 0) {
         audio.currentTime = mouseUpTemp * audio.duration;
         mouseDownTemp = -1;
       }
     });
-    $progressBar.mouseleave(function (e) {
-      if (mouseDownTemp >= 0) {
+    $progressBar.mouseleave(function (e) {if (mouseDownTemp>= 0) {
         audio.currentTime = mouseUpTemp * audio.duration;
         mouseDownTemp = -1;
       }
@@ -252,8 +213,7 @@
       $coverButton.setPlayState(currentPlayState);
       $playButton.setPlayState(currentPlayState);
     };
-    audio.onloadstart = function () {
-      $coverButton.setPlayState(currentPlayState);
+    audio.onloadstart = function () {$coverButton.setPlayState(currentPlayState);
       $playButton.setPlayState(currentPlayState);
 
       $listView.setCurrentIndex(currentIndex);
@@ -263,42 +223,28 @@
       $progressBar.setCurrentProgress(0);
       $progressLabel.setTimePass(0);
       $progressLabel.setTimeTotal(playlist[currentIndex].time || '??:??');
-      setTimeout(function () {
-        $.get(playlist[currentIndex].lrc.replace('http://', 'https://'), function (data) {
-          $lyricView.setLyric(data.replace(/\[[0-9:\.]+\]/g, '').replace(/\n/g, '<br>'));
+      setTimeout(function () {$.get(playlist[currentIndex].lrc.replace('http://', 'https://'), function (data) {$lyricView.setLyric(data.replace(/\[[0-9:\.]+\]/g, '').replace(/\n/g,'<br>'));
         }, 'text');
       }, 1000);
     };
-    audio.onprogress = function (e) {
-      if (e.target.buffered.length > 0) {
-        $progressBar.setLoadingProgress(e.target.buffered.end(0) / e.target.duration);
+    audio.onprogress = function (e) {if (e.target.buffered.length> 0) {$progressBar.setLoadingProgress(e.target.buffered.end(0) / e.target.duration);
       }
     };
-    audio.ontimeupdate = function (e) {
-      if (e.target.currentTime >= 0) {
-        if (mouseDownTemp == -1) {
-          $progressBar.setCurrentProgress(e.target.currentTime / e.target.duration);
+    audio.ontimeupdate = function (e) {if (e.target.currentTime>= 0) {if (mouseDownTemp == -1) {$progressBar.setCurrentProgress(e.target.currentTime / e.target.duration);
         }
         $progressLabel.setTimePass(Math.floor(e.target.currentTime));
       }
     };
-    audio.onended = function () {
-      if (currentMode == _player_self.Component.MODE_NORMAL) {
-        prevStack.push(currentIndex);
+    audio.onended = function () {if (currentMode == _player_self.Component.MODE_NORMAL) {prevStack.push(currentIndex);
         currentIndex += 1;
-        if (currentIndex >= playlist.length) {
-          currentIndex = 0;
-        }
-      } else if (currentMode == _player_self.Component.MODE_REPEAT) {
-        audio.load();
+        if (currentIndex>= playlist.length) {currentIndex = 0;}
+      } else if (currentMode == _player_self.Component.MODE_REPEAT) {audio.load();
         return;
-      } else if (currentMode == _player_self.Component.MODE_RANDOM) {
-        prevStack.push(currentIndex);
+      } else if (currentMode == _player_self.Component.MODE_RANDOM) {prevStack.push(currentIndex);
         currentIndex = Math.floor(Math.random() * playlist.length);
       }
       audio.src = playlist[currentIndex].url + '&br=128000';
-      audio.load();
-    };
+      audio.load();};
 
     // Extra Initialize
     $coverButton.setPlayState(currentPlayState);
@@ -318,16 +264,11 @@
 
     // Extra...
     var inOutState = false;
-    $extra.mousedown(function () {
-      if (inOutState) {
-        $outer.animate({ 'right': '-208px' });
+    $extra.mousedown(function () {if (inOutState) {$outer.animate({ 'right': '-208px'});
         $listView.slideUp();
         $lyricView.slideUp();
-        $extra.setIn();
-      } else {
-        $outer.animate({ 'right': '0' });
-        $extra.setOut();
-      }
+        $extra.setIn();} else {$outer.animate({ 'right': '0'});
+        $extra.setOut();}
       inOutState = !inOutState;
     });
 
@@ -340,8 +281,7 @@
       MODE_NORMAL: 0,
       MODE_REPEAT: 1,
       MODE_RANDOM: 2,
-      InOut: function () {
-        var $div = $('<div></div>').css({
+      InOut: function () {var $div = $('<div></div>').css({
           'height': '72px',
           'font-size': '16px',
           'user-select': 'none',
@@ -353,33 +293,26 @@
           'text-align': 'center',
           'color': 'black'
         });
-        var $i = $('<i class="fas fa-angle-left"></i>').css({
-          'margin': '28px 0'
-        });
+        var $i = $('<i class="fas fa-angle-left"></i>').css({'margin': '28px 0'});
         $div.append($i);
 
-        $div.hover(function () {
-          $(this).css({
+        $div.hover(function () {$(this).css({
             'background-color': '#102a4baa',
             'color': 'white'
           });
-        }, function () {
-          $(this).css({
+        }, function () {$(this).css({
             'background-color': '#ffffffaa',
             'color': 'black'
           });
         });
-        $div.setIn = function () {
-          $(this).children('i').removeClass('fa-angle-right').addClass('fa-angle-left');
+        $div.setIn = function () {$(this).children('i').removeClass('fa-angle-right').addClass('fa-angle-left');
         };
-        $div.setOut = function () {
-          $(this).children('i').removeClass('fa-angle-left').addClass('fa-angle-right');
+        $div.setOut = function () {$(this).children('i').removeClass('fa-angle-left').addClass('fa-angle-right');
         };
 
         return $div;
       },
-      LyricView: function () {
-        var $div = $('<div></div>').css({
+      LyricView: function () {var $div = $('<div></div>').css({
           'height': '156px',
           'font-size': '14px',
           'border-top': '1px solid lightgrey',
@@ -389,19 +322,14 @@
         });
         $div.append('<p></p>');
 
-        $div.setLyric = function (html_text) {
-          if (html_text.trim() == "") {
-            $(this).children('p').html('Not found');
-          } else {
-            $(this).children('p').html(html_text);
+        $div.setLyric = function (html_text) {if (html_text.trim() == "") {$(this).children('p').html('Not found');
+          } else {$(this).children('p').html(html_text);
           }
         };
 
         return $div;
       },
-      ListView: function (list) {
-        var $div = $('<div></div>').css({
-          'height': '156px', // (14 + 6 * 2)px * 6
+      ListView: function (list) {var $div = $('<div></div>').css({'height': '156px', // (14 + 6 * 2)px * 6
           'line-height': '100%',
           'font-size': '14px',
           'border-top': '1px solid lightgrey',
@@ -410,8 +338,7 @@
           'overflow-y': 'auto'
         });
 
-        list.forEach(function (song, i) {
-          var $item = $('<div></div>').css({
+        list.forEach(function (song, i) {var $item = $('<div></div>').css({
             'height': '14px',
             'padding': '6px'
           });
@@ -455,23 +382,18 @@
           $div.append($item);
         });
 
-        $div.children('div').hover(function () {
-          $(this).css('background-color', '#eee');
-        }, function () {
-          $(this).css('background-color', 'transparent');
+        $div.children('div').hover(function () {$(this).css('background-color', '#eee');
+        }, function () {$(this).css('background-color', 'transparent');
         });
 
-        $div.setCurrentIndex = function (index) {
-          $(this).children('div').css('padding', '6px');
+        $div.setCurrentIndex = function (index) {$(this).children('div').css('padding', '6px');
           $(this).children('div').children('div').hide();
           $(this).children('div').eq(index).css('padding', '6px 6px 6px 0');
-          $(this).children('div').eq(index).children('div').show();
-        };
+          $(this).children('div').eq(index).children('div').show();};
 
         return $div;
       },
-      ProgressLabel: function () {
-        var $div = $('<div></div>').css({
+      ProgressLabel: function () {var $div = $('<div></div>').css({
           'height': '12px',
           'line-height': '100%',
           'font-size': '12px',
@@ -484,41 +406,29 @@
         var $timeTotal = $('<span></span>');
 
         $div.append($timePass);
-        $div.append(' / ');
+        $div.append('/');
         $div.append($timeTotal);
 
-        $div.setTimeTotal = function (seconds) {
-          if (seconds == '??:??') {
-            $(this).children('span').eq(1).text('??:??');
+        $div.setTimeTotal = function (seconds) {if (seconds == '??:??') {$(this).children('span').eq(1).text('??:??');
             return;
           }
           var min = Math.floor(seconds / 60);
           var sec = seconds % 60;
-          if (min < 10) {
-            min = '0' + min;
-          }
-          if (sec < 10) {
-            sec = '0' + sec;
-          }
+          if (min < 10) {min = '0' + min;}
+          if (sec < 10) {sec = '0' + sec;}
           $(this).children('span').eq(1).text(min + ':' + sec);
         };
 
-        $div.setTimePass = function (seconds) {
-          var min = Math.floor(seconds / 60);
+        $div.setTimePass = function (seconds) {var min = Math.floor(seconds / 60);
           var sec = seconds % 60;
-          if (min < 10) {
-            min = '0' + min;
-          }
-          if (sec < 10) {
-            sec = '0' + sec;
-          }
+          if (min < 10) {min = '0' + min;}
+          if (sec < 10) {sec = '0' + sec;}
           $(this).children('span').eq(0).text(min + ':' + sec);
         };
 
         return $div;
       },
-      ProgressBar: function () {
-        var $div = $('<div></div>').css({
+      ProgressBar: function () {var $div = $('<div></div>').css({
           'width': '200px',
           'height': '16px',
           'padding': '4px',
@@ -527,8 +437,7 @@
           'user-select': 'none'
         });
 
-        var $progressInner = $('<div></div>').css({
-          'width': 'calc(100% - 8px)',
+        var $progressInner = $('<div></div>').css({'width': 'calc(100% - 8px)',
           'height': '4px',
           'margin': '7px 4px',
           'background-color': '#d3d3d3',
@@ -582,18 +491,15 @@
         $div.append($progressCurrent);
         $div.append($progressThumb);
 
-        $div.setCurrentProgress = function (progress) {
-          $(this).children('div').eq(2).css('width', progress * 100 + '%');
+        $div.setCurrentProgress = function (progress) {$(this).children('div').eq(2).css('width', progress * 100 + '%');
         };
 
-        $div.setLoadingProgress = function (progress) {
-          $(this).children('div').eq(1).css('width', progress * 100 + '%');
+        $div.setLoadingProgress = function (progress) {$(this).children('div').eq(1).css('width', progress * 100 + '%');
         };
 
         return $div;
       },
-      ControlButton: function (options) {
-        var $div = $('<div></div>')
+      ControlButton: function (options) {var $div = $('<div></div>')
           .css({
             'width': '16px',
             'height': '16px',
@@ -608,20 +514,16 @@
           })
           .html(options.icon || '<i class="fas fa-image"></i>')
           .css(options.css || {})
-          .hover(function () {
-            $(this).css('opacity', '1');
-          }, function () {
-            $(this).css('opacity', '0.6');
+          .hover(function () {$(this).css('opacity', '1');
+          }, function () {$(this).css('opacity', '0.6');
           });
 
-        $div.setIcon = function (icon) {
-          $(this).html(icon || '<i class="fas fa-image"></i>');
+        $div.setIcon = function (icon) {$(this).html(icon || '<i class="fas fa-image"></i>');
         };
 
         return $div;
       },
-      CoverButton: function () {
-        var $div = $('<div></div>').css({
+      CoverButton: function () {var $div = $('<div></div>').css({
           'width': '72px',
           'height': '72px',
           'cursor': 'pointer',
@@ -642,15 +544,11 @@
           'text-shadow': '0 0 0.1px black'
         });
 
-        $div.hover(function () {
-          $(this).children('i').css('opacity', '1');
-        }, function () {
-          $(this).children('i').css('opacity', '0.8');
+        $div.hover(function () {$(this).children('i').css('opacity', '1');
+        }, function () {$(this).children('i').css('opacity', '0.8');
         });
 
-        $div.setPlayState = function (state) {
-          if (state) {
-            $(this).children('i')
+        $div.setPlayState = function (state) {if (state) {$(this).children('i')
               .removeClass('fa-play-circle')
               .addClass('fa-pause-circle')
               .animate({
@@ -658,8 +556,7 @@
                 'top': '48px',
                 'left': '48px'
               });
-          } else {
-            $(this).children('i')
+          } else {$(this).children('i')
               .removeClass('fa-pause-circle')
               .addClass('fa-play-circle')
               .animate({
@@ -670,14 +567,12 @@
           }
         };
 
-        $div.setCover = function (cover) {
-          $(this).css('background-image', 'url(' + cover + ')');
+        $div.setCover = function (cover) {$(this).css('background-image', 'url(' + cover + ')');
         };
 
         return $div;
       },
-      SongInfo: function () {
-        var $div = $('<div></div>').css({
+      SongInfo: function () {var $div = $('<div></div>').css({
           'height': '16px',
           'line-height': '100%',
           'padding': '4px',
@@ -698,23 +593,19 @@
         });
 
         $div.append($title);
-        $div.append(' - ');
+        $div.append('-');
         $div.append($artist);
 
-        $div.setSongInfo = function (options) {
-          if (options.name) {
-            $(this).children('span').eq(0).text(options.name);
+        $div.setSongInfo = function (options) {if (options.name) {$(this).children('span').eq(0).text(options.name);
           }
-          if (options.singer) {
-            $(this).children('span').eq(1).text(options.singer);
+          if (options.singer) {$(this).children('span').eq(1).text(options.singer);
           }
         };
 
         return $div;
       },
       CustomPlayControlButton: function () {
-        var $playButton = this.ControlButton({
-          'icon': '<i class="far fa-play-circle"></i>',
+        var $playButton = this.ControlButton({'icon': '<i class="far fa-play-circle"></i>',
           'css': {
             'width': '18px',
             'height': '18px',
@@ -723,13 +614,10 @@
           }
         });
 
-        $playButton.setPlayState = function (state) {
-          if (state) {
-            $(this).children('i')
+        $playButton.setPlayState = function (state) {if (state) {$(this).children('i')
               .removeClass('fa-play-circle')
               .addClass('fa-pause-circle');
-          } else {
-            $(this).children('i')
+          } else {$(this).children('i')
               .removeClass('fa-pause-circle')
               .addClass('fa-play-circle');
           }
@@ -738,8 +626,7 @@
         return $playButton;
       },
       CustomVolumeControlButton: function (volumeChangedListener) {
-        var $volumeButton = this.ControlButton({
-          'icon': '<i class="fas fa-volume-down"></i>'
+        var $volumeButton = this.ControlButton({'icon': '<i class="fas fa-volume-down"></i>'
         }).css('width', '16px');
 
         var $volumeBar = $('<div></div>').css({
@@ -761,79 +648,58 @@
           'width': '100%'
         });
 
-        $volumeBar.mousedown(function (e) {
-          $(this).children('div').css('height', e.offsetY);
+        $volumeBar.mousedown(function (e) {$(this).children('div').css('height', e.offsetY);
           var volume = e.offsetY / $(this).height();
           $(this).siblings('i').removeClass('fa-volume-off fa-volume-down fa-volume-up');
-          if (volume < 0.3) {
-            $(this).siblings('i').addClass('fa-volume-off');
-          } else if (volume < 0.7) {
-            $(this).siblings('i').addClass('fa-volume-down');
-          } else {
-            $(this).siblings('i').addClass('fa-volume-up');
+          if (volume < 0.3) {$(this).siblings('i').addClass('fa-volume-off');
+          } else if (volume < 0.7) {$(this).siblings('i').addClass('fa-volume-down');
+          } else {$(this).siblings('i').addClass('fa-volume-up');
           }
-          if (volumeChangedListener) {
-            volumeChangedListener(volume);
+          if (volumeChangedListener) {volumeChangedListener(volume);
           }
         });
 
-        $volumeButton.children('i').click(function () {
-          $(this).siblings('div').children('div').css('height', 0);
+        $volumeButton.children('i').click(function () {$(this).siblings('div').children('div').css('height', 0);
           $(this).removeClass('fa-volume-down fa-volume-up')
             .addClass('fa-volume-off');
-          if (volumeChangedListener) {
-            volumeChangedListener(0);
+          if (volumeChangedListener) {volumeChangedListener(0);
           }
         });
 
-        $volumeButton.hover(function () {
-          $(this).children('div').show();
-        }, function () {
-          $(this).children('div').hide();
-        });
+        $volumeButton.hover(function () {$(this).children('div').show();}, function () {$(this).children('div').hide();});
 
         $volumeBar.hide();
 
         $volumeBar.append($volumeBarInner);
         $volumeButton.append($volumeBar);
 
-        $volumeButton.setVolume = function (volume) {
-          $(this).children('div').children('div').css('height', $(this).children('div').height() * volume);
+        $volumeButton.setVolume = function (volume) {$(this).children('div').children('div').css('height', $(this).children('div').height() * volume);
           $(this).siblings('i').removeClass('fa-volume-off fa-volume-down fa-volume-up');
-          if (volume < 0.3) {
-            $(this).children('i').addClass('fa-volume-off');
-          } else if (volume < 0.7) {
-            $(this).children('i').addClass('fa-volume-down');
-          } else {
-            $(this).children('i').addClass('fa-volume-up');
+          if (volume < 0.3) {$(this).children('i').addClass('fa-volume-off');
+          } else if (volume < 0.7) {$(this).children('i').addClass('fa-volume-down');
+          } else {$(this).children('i').addClass('fa-volume-up');
           }
-          if (volumeChangedListener) {
-            volumeChangedListener(volume);
+          if (volumeChangedListener) {volumeChangedListener(volume);
           }
         };
 
         return $volumeButton;
       },
       CustomModeControlButton: function () {
-        var $modeButton = this.ControlButton({
-          'icon': '<i class="fas fa-exchange-alt"></i>'
+        var $modeButton = this.ControlButton({'icon': '<i class="fas fa-exchange-alt"></i>'
         });
 
         var normal = this.MODE_NORMAL;
         var repeat = this.MODE_REPEAT;
         var random = this.MODE_RANDOM;
 
-        $modeButton.setMode = function (mode) {
-          if (mode == normal) {
-            $(this).children('i')
+        $modeButton.setMode = function (mode) {if (mode == normal) {$(this).children('i')
               .removeClass('fa-redo-alt fa-random')
               .addClass('fa-exchange-alt');
-          } else if (mode == repeat) {
-            $(this).children('i')
+          } else if (mode == repeat) {$(this).children('i')
               .removeClass('fa-exchange-alt fa-random')
               .addClass('fa-redo-alt');
-          } else if (mode == random) {
-            $(this).children('i')
+          } else if (mode == random) {$(this).children('i')
               .removeClass('fa-redo-alt fa-exchange-alt')
               .addClass('fa-random');
           }
